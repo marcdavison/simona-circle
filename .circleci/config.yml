@@ -7,9 +7,7 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/install-packages:
-          steps:
-            - run: install-npm
+      - node/install-packages
 workflows:
     build-and-test:
       jobs:
