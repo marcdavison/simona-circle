@@ -2,12 +2,15 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.1
 jobs:
-  test:
+  build-and-test:
     executor:
       name: node/default
-      tag: '13'
     steps:
       - checkout
-      - node/install-packages
-      - run:
-          command: npm run test
+      - node/install-packages:
+          steps:
+            - run: install-npm
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
